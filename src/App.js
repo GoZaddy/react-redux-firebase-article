@@ -1,24 +1,26 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import PrivateRoute from "./UI/Components/PrivateRoute";
+import Todos from "./UI/Routes/Todos";
+import SignIn from "./UI/Routes/SignIn";
+import {Switch, Route} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style = {{
+      textAlign: "center"
+    }}>
+      <h1>Redux Todos App</h1>
+      <Switch>
+        <PrivateRoute path = "/todos">
+          <Todos />
+        </PrivateRoute>
+        <Route path = "/">
+        <SignIn />
+        </Route>
+      </Switch>
+      
     </div>
   );
 }
